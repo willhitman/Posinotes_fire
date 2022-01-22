@@ -21,11 +21,11 @@ class _NoteDetailPageState extends State<NoteDetailPage> {
   bool isLoading = false;
 
   @override
-  Future<void> initState() async {
+  initState()  {
     super.initState();
 
     refreshNote();
-    note = await NotesDatabase.instance.readNote(widget.noteId);
+  //  note = await NotesDatabase.instance.readNote(widget.noteId);
   }
 
   Future refreshNote() async {
