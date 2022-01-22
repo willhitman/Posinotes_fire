@@ -22,12 +22,12 @@ class _NotesPageState extends State<NotesPage> {
     refreshNotes();
   }
 
-  @override
-  void dispose() {
-    NotesDatabase.instance.close();
+  // @override
+  // void dispose() {
+  //   NotesDatabase.instance.close();
 
-    super.dispose();
-  }
+  //   super.dispose();
+  // }
 
   Future refreshNotes() async {
     setState(() => isLoading = true);

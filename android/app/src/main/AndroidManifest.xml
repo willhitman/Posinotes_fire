@@ -2,7 +2,7 @@
     package="com.example.posinotes_sqlflite">
    <application
         android:label="posinotes_sqlflite"
-        android:name="${applicationName}"
+        
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

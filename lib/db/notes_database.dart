@@ -6,6 +6,8 @@ import 'package:sqflite/sqflite.dart';
 class NotesDatabase {
   static final NotesDatabase instance = NotesDatabase._init();
 
+  
+
   static Database? _database;
 
   NotesDatabase._init();
@@ -124,7 +126,7 @@ class NotesDatabase {
 
   Future close() async{
     final db = await instance.database;
-
+    
     db.close();
   }
 

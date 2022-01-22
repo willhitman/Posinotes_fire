@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:posinotes_sqlflite/pages/dashboard_page.dart';
 import 'package:posinotes_sqlflite/pages/notes_page.dart';
 
 Future main() async {
@@ -28,6 +29,6 @@ class MyApp extends StatelessWidget {
         elevation: 0,
       ),
     ),
-    home: NotesPage(),
+    home: DashboardPage(),
   );
 }
