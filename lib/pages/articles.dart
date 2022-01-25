@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:posinotes_sqlflite/model/article_model.dart';
+import 'package:posinotes_sqlflite/services/api_service.dart';
 
 class Articles extends StatefulWidget {
-  final int noteId;
-
   const Articles({
     Key? key,
-    required this.noteId,
   }) : super(key: key);
 
   @override
@@ -13,7 +12,38 @@ class Articles extends StatefulWidget {
 }
 
 class Articles_List extends State<Articles> {
+  bool isLoading = false;
+
+  ApiService client = ApiService();
+
   @override
-  @override
-  Widget build(BuildContext context) => Scaffold();
+  Widget build(BuildContext context) => Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Articles',
+          style: TextStyle(fontSize: 24),
+        ),
+        actions: [Icon(Icons.search), SizedBox(width: 12)],
+      ),
+      body: FutureBuilder(
+          future: client.getArticle(),
+          builder:
+              (BuildContext context, AsyncSnapshot<List<Article>> snapshot) {
+            if (snapshot.hasData) {
+              List<Article>? articles = snapshot.data;
+              return ListView.builder(
+                  itemCount: articles?.length,
+                  itemBuilder: (context, index) => ListTile(
+                        title: Text(
+                          articles![index].title,
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ));
+            } else {
+              return Center(child: CircularProgressIndicator());
+            }
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }));
 }
