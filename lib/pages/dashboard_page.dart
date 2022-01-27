@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:posinotes_sqlflite/pages/notes_page.dart';
+import 'package:posinotes_sqlflite/pages/quote_page.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({Key? key}) : super(key: key);
@@ -11,8 +12,8 @@ class DashboardPage extends StatefulWidget {
 class _DashboardPageState extends State<DashboardPage> {
   List<Widget> tabs = [
     //Home
-    const Center(
-        child: Text("Home", style: TextStyle(color: Colors.black))
+     const Center(
+        child: QuotesPage()
         // child: ProductsPage(),
         ),
 
@@ -85,7 +86,7 @@ class _DashboardPageState extends State<DashboardPage> {
                       IconButton(
                         icon: Icon(
                           Icons.home,
-                          color: currentPage == 0 ? Colors.grey : Colors.white,
+                          color: currentPage == 0 ? Colors.yellow : Colors.white,
                           size: 30,
                         ),
                         onPressed: () => setPage(0),
@@ -102,7 +103,7 @@ class _DashboardPageState extends State<DashboardPage> {
                       IconButton(
                         icon: Icon(
                           Icons.note_outlined,
-                          color: currentPage == 1 ? Colors.grey : Colors.white,
+                          color: currentPage == 1 ? Colors.yellow : Colors.white,
                           size: 30,
                         ),
                         onPressed: () => setPage(1),
@@ -121,7 +122,7 @@ class _DashboardPageState extends State<DashboardPage> {
                           onPressed: () => setPage(4),
                           icon: Icon(Icons.article_outlined,
                               color:
-                                  currentPage == 4 ? Colors.grey : Colors.white,
+                                  currentPage == 4 ? Colors.yellow : Colors.white,
                               size: 30)),
                       const Text(
                         "Articles",
@@ -135,7 +136,7 @@ class _DashboardPageState extends State<DashboardPage> {
                       IconButton(
                         icon: Icon(
                           Icons.account_circle,
-                          color: currentPage == 2 ? Colors.grey : Colors.white,
+                          color: currentPage == 2 ? Colors.yellow : Colors.white,
                           size: 30,
                         ),
                         onPressed: () => setPage(2),

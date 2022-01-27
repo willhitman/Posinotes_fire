@@ -64,7 +64,7 @@ class _AddEditNotePageState extends State<AddEditNotePage> {
           primary: isFormValid ? null : Colors.grey.shade700,
         ),
         onPressed: addOrUpdateNote,
-        child: Text('Save'),
+        child: Text('Save',style: TextStyle(color: Colors.yellow),),
       ),
     );
   }

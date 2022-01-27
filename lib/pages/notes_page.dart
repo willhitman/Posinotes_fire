@@ -40,6 +40,8 @@ class _NotesPageState extends State<NotesPage> {
   @override
   Widget build(BuildContext context) => Scaffold(
     appBar: AppBar(
+      foregroundColor: Colors.yellow,
+      automaticallyImplyLeading: false,
       title: Text(
         'Notes',
         style: TextStyle(fontSize: 24),
