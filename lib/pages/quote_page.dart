@@ -61,41 +61,31 @@ class _QuotesPageState extends State<QuotesPage> {
           ),
           Padding(
               padding: EdgeInsets.only(left: 40, top: 50, right: 40),
-              // child:
-              // Card(
-              //   color: Colors.red,
-              //   shape: RoundedRectangleBorder(
-              //     borderRadius: BorderRadius.circular(5),
-              //     // side: const BorderSide(
-              //     //   // color: Colors.black,
-              //     //   width: 2.0,
-              //     // ),
-              //   ),
-              child: FutureBuilder<Quote>(
+              child: Card(
+                color: Colors.yellow,
+                child: Padding(
+                  padding: EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 20),
+                child: 
+               FutureBuilder<Quote>(
                 future: futureQuote,
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     return Text(
                       snapshot.data!.quote.body,
-                      style: TextStyle(color: Colors.yellow),
-                    );
-                  }
-                  if (snapshot.hasData) {
-                    return Text(
-                      snapshot.data!.quote.author,
-                      style: TextStyle(color: Colors.red),
-                    );
+                      style: TextStyle(color: Colors.black),
+                    );      
                   } else if (snapshot.hasError) {
                     return Text('${snapshot.error}');
                   }
 
                   // By default, show a loading spinner.
                   return const Padding(
-                    padding: EdgeInsets.only(top: 30),
+                    padding: EdgeInsets.only(top: 20),
                     child: Center(child: CircularProgressIndicator()),
                   );
                 },
-              ))
+              )))
+          )
         ],
       ),
     );
