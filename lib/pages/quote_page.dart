@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:posinotes_sqlflite/model/quote.dart';
 import 'package:posinotes_sqlflite/network/quotes_network.dart';
@@ -11,7 +13,7 @@ class QuotesPage extends StatefulWidget {
 }
 
 class _QuotesPageState extends State<QuotesPage> {
-  late Future<Quote> futureQuote;
+  late Future<List<Quote>> futureQuote;
 
   @override
   void initState() {
@@ -27,13 +29,33 @@ class _QuotesPageState extends State<QuotesPage> {
         title: Text("Quotes"),
         automaticallyImplyLeading: false,
       ),
-      body: ListView(
+      body: Column(
         children: [
+          Padding(padding: EdgeInsets.only(top: 100)),
           SizedBox(
-            height: 250,
-            width: 5,
-            child: Padding(
-              padding: const EdgeInsets.only(left: 30, top: 200, right: 30),
+              height: 250,
+              child: Card(
+                  color: Colors.yellow,
+                  child: FutureBuilder<List<Quote>>(
+                    future: futureQuote,
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        return listData(snapshot.data ?? []);
+                      } else if (snapshot.hasError) {
+                        log('Errrrrror');
+                        return Text('${snapshot.error}');
+                      }
+
+                      // By default, show a loading spinner.
+                      return const Padding(
+                        padding: EdgeInsets.only(top: 20),
+                        child: Center(child: CircularProgressIndicator()),
+                      );
+                    },
+                  ))),
+                  SizedBox(
+                    child: Padding(
+              padding: const EdgeInsets.only(left: 30, top: 0, right: 30),
               child: ElevatedButton(
                 child: const Text('Get Quote',
                     style: TextStyle(
@@ -58,41 +80,27 @@ class _QuotesPageState extends State<QuotesPage> {
                     ))),
               ),
             ),
-          ),
-          Padding(
-              padding: EdgeInsets.only(left: 40, top: 50, right: 40),
-              child: Card(
-                color: Colors.yellow,
-                child: Padding(
-                  padding: EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 20),
-                child: 
-               FutureBuilder<Quote>(
-                future: futureQuote,
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    return Text(
-                      snapshot.data!.quote.body,
-                      style: TextStyle(color: Colors.black),
-                    );      
-                  } else if (snapshot.hasError) {
-                    return Text('${snapshot.error}');
-                  }
-
-                  // By default, show a loading spinner.
-                  return const Padding(
-                    padding: EdgeInsets.only(top: 20),
-                    child: Center(child: CircularProgressIndicator()),
-                  );
-                },
-              )))
-          )
+                  )
         ],
       ),
     );
   }
 
-  // void updateUI() {
-  //  Navigator.of(context).push(new MaterialPageRoute(builder: (context) => ))
-
-  // }
+  Widget listData(List<Quote> data) {
+    return ListView.builder(
+        itemCount: data.length,
+        itemBuilder: (context, index) {
+          return Column(
+            children: [
+              Text(data[index].quote,
+              style: TextStyle(
+                 fontWeight: FontWeight.bold
+                )
+                ),
+              SizedBox(height: 20,)
+            ],
+          );
+          
+        });
+  }
 }
