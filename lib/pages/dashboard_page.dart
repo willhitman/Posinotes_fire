@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:posinotes_sqlflite/pages/notes_page.dart';
 import 'package:posinotes_sqlflite/pages/quote_page.dart';
 
+import 'articles.dart';
+
 class DashboardPage extends StatefulWidget {
   const DashboardPage({Key? key}) : super(key: key);
 
@@ -17,17 +19,11 @@ class _DashboardPageState extends State<DashboardPage> {
         // child: ProductsPage(),
         ),
 
-
-
-    
-
     //NotesPage
-     Center(child: NotesPage(
-       
-     )),
+    Center(child: NotesPage()),
 
     //Account
-     const Center(
+    const Center(
       child:
           Center(child: Text("Account", style: TextStyle(color: Colors.black))),
     ),
@@ -39,9 +35,8 @@ class _DashboardPageState extends State<DashboardPage> {
     ),
 
     //Articles
-    const Center(child: Text("Articles", style: TextStyle(color: Colors.black))
-        // ProductsPage()
-        ),
+    Center(child: Articles())
+    // ProductsPage()
   ];
 
   int currentPage = 0;
