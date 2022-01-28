@@ -8,6 +8,6 @@ class ContactsPage extends StatelessWidget {
       appBar: AppBar(
 
       ),
-    )
+    );
   }
 }

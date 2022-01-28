@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:posinotes_sqlflite/model/article_model.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+
 class ArticlePage extends StatefulWidget {
   final String urll;
   const ArticlePage({Key? key, required this.urll}) : super(key: key);
