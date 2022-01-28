@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:posinotes_sqlflite/pages/notes_page.dart';
+import 'package:posinotes_sqlflite/pages/quote_page.dart';
 
 import 'articles.dart';
 
@@ -13,7 +14,8 @@ class DashboardPage extends StatefulWidget {
 class _DashboardPageState extends State<DashboardPage> {
   List<Widget> tabs = [
     //Home
-    const Center(child: Text("Home", style: TextStyle(color: Colors.black))
+     const Center(
+        child: QuotesPage()
         // child: ProductsPage(),
         ),
 
@@ -66,7 +68,7 @@ class _DashboardPageState extends State<DashboardPage> {
       // ),
       // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
-          color: Colors.black,
+          color: Colors.white,
           shape: CircularNotchedRectangle(),
           child: Container(
               height: 80,
@@ -79,7 +81,7 @@ class _DashboardPageState extends State<DashboardPage> {
                       IconButton(
                         icon: Icon(
                           Icons.home,
-                          color: currentPage == 0 ? Colors.grey : Colors.white,
+                          color: currentPage == 0 ? Color(0XFF3BAAFF) : Colors.blueGrey,
                           size: 30,
                         ),
                         onPressed: () => setPage(0),
@@ -87,7 +89,7 @@ class _DashboardPageState extends State<DashboardPage> {
                       const Text(
                         "Home",
                         style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.bold),
+                            color: Color(0XFF3BAAFF), fontWeight: FontWeight.bold),
                       )
                     ],
                   ),
@@ -96,7 +98,7 @@ class _DashboardPageState extends State<DashboardPage> {
                       IconButton(
                         icon: Icon(
                           Icons.note_outlined,
-                          color: currentPage == 1 ? Colors.grey : Colors.white,
+                          color: currentPage == 1 ? Color(0XFF3BAAFF) : Colors.blueGrey,
                           size: 30,
                         ),
                         onPressed: () => setPage(1),
@@ -104,7 +106,7 @@ class _DashboardPageState extends State<DashboardPage> {
                       const Text(
                         "Personal Notes",
                         style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.bold),
+                            color: Color(0XFF3BAAFF), fontWeight: FontWeight.bold),
                       )
                     ],
                   ),
@@ -115,12 +117,12 @@ class _DashboardPageState extends State<DashboardPage> {
                           onPressed: () => setPage(4),
                           icon: Icon(Icons.article_outlined,
                               color:
-                                  currentPage == 4 ? Colors.grey : Colors.white,
+                                  currentPage == 4 ? Color(0XFF3BAAFF) : Colors.blueGrey,
                               size: 30)),
                       const Text(
                         "Articles",
                         style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.bold),
+                            color: Color(0XFF3BAAFF), fontWeight: FontWeight.bold),
                       )
                     ],
                   ),
@@ -129,15 +131,15 @@ class _DashboardPageState extends State<DashboardPage> {
                       IconButton(
                         icon: Icon(
                           Icons.account_circle,
-                          color: currentPage == 2 ? Colors.grey : Colors.white,
+                          color: currentPage == 2 ? Color(0XFF3BAAFF) : Colors.blueGrey,
                           size: 30,
                         ),
                         onPressed: () => setPage(2),
                       ),
                       const Text(
-                        "Account",
+                        "Find Help",
                         style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.bold),
+                            color: Color(0XFF3BAAFF), fontWeight: FontWeight.bold),
                       )
                     ],
                   ),
