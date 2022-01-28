@@ -40,7 +40,7 @@ class _NotesPageState extends State<NotesPage> {
   @override
   Widget build(BuildContext context) => Scaffold(
     appBar: AppBar(
-      foregroundColor: Colors.yellow,
+      foregroundColor: Color(0XFF3BAAFF),
       automaticallyImplyLeading: false,
       title: Text(
         'Notes',
@@ -54,12 +54,12 @@ class _NotesPageState extends State<NotesPage> {
           : notes.isEmpty
           ? Text(
         'No Notes',
-        style: TextStyle(color: Colors.white, fontSize: 24),
+        style: TextStyle(color: Colors.black, fontSize: 24),
       )
           : buildNotes(),
     ),
     floatingActionButton: FloatingActionButton(
-      backgroundColor: Colors.black,
+      backgroundColor: Color(0XFF3BAAFF),
       child: Icon(Icons.add),
       onPressed: () async {
         await Navigator.of(context).push(

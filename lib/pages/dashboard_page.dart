@@ -73,7 +73,7 @@ class _DashboardPageState extends State<DashboardPage> {
       // ),
       // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
-          color: Colors.black,
+          color: Colors.white,
           shape: CircularNotchedRectangle(),
           child: Container(
               height: 80,
@@ -86,7 +86,7 @@ class _DashboardPageState extends State<DashboardPage> {
                       IconButton(
                         icon: Icon(
                           Icons.home,
-                          color: currentPage == 0 ? Colors.yellow : Colors.white,
+                          color: currentPage == 0 ? Color(0XFF3BAAFF) : Colors.blueGrey,
                           size: 30,
                         ),
                         onPressed: () => setPage(0),
@@ -94,7 +94,7 @@ class _DashboardPageState extends State<DashboardPage> {
                       const Text(
                         "Home",
                         style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.bold),
+                            color: Color(0XFF3BAAFF), fontWeight: FontWeight.bold),
                       )
                     ],
                   ),
@@ -103,7 +103,7 @@ class _DashboardPageState extends State<DashboardPage> {
                       IconButton(
                         icon: Icon(
                           Icons.note_outlined,
-                          color: currentPage == 1 ? Colors.yellow : Colors.white,
+                          color: currentPage == 1 ? Color(0XFF3BAAFF) : Colors.blueGrey,
                           size: 30,
                         ),
                         onPressed: () => setPage(1),
@@ -111,7 +111,7 @@ class _DashboardPageState extends State<DashboardPage> {
                       const Text(
                         "Personal Notes",
                         style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.bold),
+                            color: Color(0XFF3BAAFF), fontWeight: FontWeight.bold),
                       )
                     ],
                   ),
@@ -122,12 +122,12 @@ class _DashboardPageState extends State<DashboardPage> {
                           onPressed: () => setPage(4),
                           icon: Icon(Icons.article_outlined,
                               color:
-                                  currentPage == 4 ? Colors.yellow : Colors.white,
+                                  currentPage == 4 ? Color(0XFF3BAAFF) : Colors.blueGrey,
                               size: 30)),
                       const Text(
                         "Articles",
                         style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.bold),
+                            color: Color(0XFF3BAAFF), fontWeight: FontWeight.bold),
                       )
                     ],
                   ),
@@ -136,15 +136,15 @@ class _DashboardPageState extends State<DashboardPage> {
                       IconButton(
                         icon: Icon(
                           Icons.account_circle,
-                          color: currentPage == 2 ? Colors.yellow : Colors.white,
+                          color: currentPage == 2 ? Color(0XFF3BAAFF) : Colors.blueGrey,
                           size: 30,
                         ),
                         onPressed: () => setPage(2),
                       ),
                       const Text(
-                        "Account",
+                        "Find Help",
                         style: TextStyle(
-                            color: Colors.white, fontWeight: FontWeight.bold),
+                            color: Color(0XFF3BAAFF), fontWeight: FontWeight.bold),
                       )
                     ],
                   ),
