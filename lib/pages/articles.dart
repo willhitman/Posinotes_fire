@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:posinotes_sqlflite/model/article_model.dart';
 import 'package:posinotes_sqlflite/services/api_service.dart';
+import 'package:posinotes_sqlflite/widget/custom_list_tile.dart';
 
 class Articles extends StatefulWidget {
   const Articles({
@@ -33,12 +34,8 @@ class Articles_List extends State<Articles> {
               List<Article>? articles = snapshot.data;
               return ListView.builder(
                   itemCount: articles?.length,
-                  itemBuilder: (context, index) => ListTile(
-                        title: Text(
-                          articles![index].title,
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ));
+                  itemBuilder: (context, index) =>
+                      customListTile(articles![index], context));
             } else {
               return Center(child: CircularProgressIndicator());
             }
