@@ -22,8 +22,8 @@ class _QuotesPageState extends State<QuotesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black,
-        foregroundColor: Colors.yellow,
+        backgroundColor: Colors.white,
+        foregroundColor: Color(0XFF3BAAFF),
         title: Text("Quotes"),
         automaticallyImplyLeading: false,
       ),
@@ -37,7 +37,7 @@ class _QuotesPageState extends State<QuotesPage> {
               child: ElevatedButton(
                 child: const Text('Get Quote',
                     style: TextStyle(
-                      color: Colors.black,
+                      color: Colors.white,
                       fontWeight: FontWeight.bold,
                     )),
                 onPressed: () {
@@ -50,11 +50,11 @@ class _QuotesPageState extends State<QuotesPage> {
                 style: ButtonStyle(
                     alignment: Alignment.center,
                     backgroundColor:
-                        MaterialStateProperty.all<Color>(Colors.yellow),
+                        MaterialStateProperty.all<Color>(Color(0XFF3BAAFF)),
                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(18.0),
-                      side: const BorderSide(color: Colors.black, width: 4),
+                      side: const BorderSide(color: Colors.white, width: 2),
                     ))),
               ),
             ),
@@ -62,7 +62,7 @@ class _QuotesPageState extends State<QuotesPage> {
           Padding(
               padding: EdgeInsets.only(left: 40, top: 50, right: 40),
               child: Card(
-                color: Colors.yellow,
+                color: Color(0XFF3BAAFF),
                 child: Padding(
                   padding: EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 20),
                 child: 
@@ -72,7 +72,7 @@ class _QuotesPageState extends State<QuotesPage> {
                   if (snapshot.hasData) {
                     return Text(
                       snapshot.data!.quote.body,
-                      style: TextStyle(color: Colors.black),
+                      style: TextStyle(color: Colors.white),
                     );      
                   } else if (snapshot.hasError) {
                     return Text('${snapshot.error}');
