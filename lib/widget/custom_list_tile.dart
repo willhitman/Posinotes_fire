@@ -52,10 +52,6 @@ Widget customListTile(Article article, BuildContext context) {
             article.title,
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
           ),
-          Text(
-            article.url,
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
-          ),
         ],
       ),
     ),

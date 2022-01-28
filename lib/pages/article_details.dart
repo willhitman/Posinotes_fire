@@ -21,8 +21,16 @@ class WebViewExampleState extends State<ArticlePage> {
 
   @override
   Widget build(BuildContext context) {
-    return WebView(
-      initialUrl: widget.urll,
-    );
+    return Scaffold(
+        appBar: AppBar(
+          title: Text(
+            'PosiNotes Reader Mode',
+            style: TextStyle(fontSize: 15.00),
+          ),
+          actions: [Icon(Icons.search), SizedBox(width: 12)],
+        ),
+        body: WebView(
+          initialUrl: widget.urll,
+        ));
   }
 }
