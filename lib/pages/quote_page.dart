@@ -28,15 +28,18 @@ class _QuotesPageState extends State<QuotesPage> {
         foregroundColor: Color(0XFF3BAAFF),
         title: Text("Quotes"),
         automaticallyImplyLeading: false,
+
       ),
+
       body: Column(
+
         children: [
           Padding(padding: EdgeInsets.only(top: 100)),
-          SizedBox(
+          Container(
               height: 300,
               child: Card(
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0) ),
-                  color: Color(0XFF3BAAFF),
+                  color: Colors.white,
                   child: FutureBuilder<List<Quote>>(
                     future: futureQuote,
                     builder: (context, snapshot) {
@@ -55,6 +58,7 @@ class _QuotesPageState extends State<QuotesPage> {
                     },
                   ))),
                   SizedBox(
+
                     child: Padding(
               padding: const EdgeInsets.only(left: 30, top: 0, right: 30),
               child: ElevatedButton(
@@ -93,16 +97,16 @@ class _QuotesPageState extends State<QuotesPage> {
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.only(top: 10, bottom: 10, left: 5, right: 5 ),
-            child: Column(
-              children: [
+            child: Card(
+              color: Colors.blue,
+          child:
                 Text(data[index].quote,
                 style: const TextStyle(
                   color: Colors.black,
                    fontWeight: FontWeight.bold
                   )
                   ),
-                const SizedBox(height: 20,)
-              ],
+                // const SizedBox(height: 20,)
             ),
           );
           

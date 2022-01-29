@@ -24,7 +24,11 @@ class WebViewExampleState extends State<ArticlePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.white,
+          foregroundColor: Color(0XFF3BAAFF),
+          automaticallyImplyLeading: false,
           title: Text(
+
             'PosiNotes Reader Mode',
             style: TextStyle(fontSize: 15.00),
           ),

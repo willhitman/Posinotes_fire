@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:posinotes_sqlflite/pages/contacts_page.dart';
 import 'package:posinotes_sqlflite/pages/notes_page.dart';
 import 'package:posinotes_sqlflite/pages/quote_page.dart';
 
@@ -23,9 +24,8 @@ class _DashboardPageState extends State<DashboardPage> {
     Center(child: NotesPage()),
 
     //Account
-    const Center(
-      child:
-          Center(child: Text("Account", style: TextStyle(color: Colors.black))),
+     Center(
+      child: ContactsPage()
     ),
 
     //Logout
@@ -129,6 +129,7 @@ class _DashboardPageState extends State<DashboardPage> {
                   Column(
                     children: [
                       IconButton(
+
                         icon: Icon(
                           Icons.account_circle,
                           color: currentPage == 2 ? Color(0XFF3BAAFF) : Colors.blueGrey,

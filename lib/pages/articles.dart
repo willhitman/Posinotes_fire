@@ -20,8 +20,12 @@ class Articles_List extends State<Articles> {
   @override
   Widget build(BuildContext context) => Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
+        foregroundColor: Color(0XFF3BAAFF),
+        automaticallyImplyLeading: false,
         title: Text(
           'Articles',
+
           style: TextStyle(fontSize: 24),
         ),
         actions: [Icon(Icons.search), SizedBox(width: 12)],
