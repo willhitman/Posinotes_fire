@@ -4,13 +4,13 @@ import 'package:http/http.dart';
 import 'package:posinotes_sqlflite/model/article_model.dart';
 
 class ApiService {
-  var uri = "https://willhitman.herokuapp.com/articles";
+  var uri = "https://newsapiv1.azurewebsites.net/articles";
 
   // http request function
 
   Future<List<Article>> getArticle() async {
     Response res =
-        await get(Uri.parse("https://willhitman.herokuapp.com/articles"));
+        await get(Uri.parse("https://newsapiv1.azurewebsites.net/articles"));
     // check for 200 response
     if (res.statusCode == 200) {
       Map<String, dynamic> json = jsonDecode(res.body);
