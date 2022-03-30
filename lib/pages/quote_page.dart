@@ -1,9 +1,13 @@
-import 'dart:developer';
+//import 'dart:developer';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:flutter/material.dart';
 import 'package:posinotes_sqlflite/model/quote.dart';
-import 'package:posinotes_sqlflite/network/quotes_network.dart';
+//import 'package:posinotes_sqlflite/network/quotes_network.dart';
 import 'package:posinotes_sqlflite/pages/dashboard_page.dart';
+import 'package:posinotes_sqlflite/widget/quote_widget.dart';
+//import 'package:random_color/random_color.dart';
 
 class QuotesPage extends StatefulWidget {
   const QuotesPage({Key? key}) : super(key: key);
@@ -12,15 +16,19 @@ class QuotesPage extends StatefulWidget {
   _QuotesPageState createState() => _QuotesPageState();
 }
 
+
 class _QuotesPageState extends State<QuotesPage> {
-  late Future<List<Quote>> futureQuote;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+ // final RandomColor _randomColor = RandomColor();
 
   @override
   void initState() {
     super.initState();
-    futureQuote = fetchQuote();
+    // futureQuote = fetchQuote();
   }
+  @override
 
+ // late Future<List<Quote>> futureQuote;
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -31,85 +39,48 @@ class _QuotesPageState extends State<QuotesPage> {
 
       ),
 
-      body: Column(
+      body: StreamBuilder(
+       
 
-        children: [
-          Padding(padding: EdgeInsets.only(top: 100)),
-          Container(
-              height: 300,
-              child: Card(
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0) ),
-                  color: Colors.white,
-                  child: FutureBuilder<List<Quote>>(
-                    future: futureQuote,
-                    builder: (context, snapshot) {
-                      if (snapshot.hasData) {
-                        return listData(snapshot.data ?? []);
-                      } else if (snapshot.hasError) {
-                        log('Errrrrror');
-                        return Text('${snapshot.error}');
-                      }
+        stream: _firestore.collection("qoutes").snapshots(),
+        builder: (BuildContext context, AsyncSnapshot  snapshot){
+          if(!snapshot.hasData) return _LoadingIndicator();
 
-                      // By default, show a loading spinner.
-                      return const Padding(
-                        padding: EdgeInsets.only(top: 20),
-                        child: Center(child: CircularProgressIndicator()),
-                      );
-                    },
-                  ))),
-                  SizedBox(
+          return PageView.builder(
+            itemCount: snapshot.data.docs.length,
+            itemBuilder: (context, index){
+              final document = snapshot.data.docs[index];
+              return QuoteWidget(
+                backgroundColor: Colors.redAccent,
+                //_randomColor.randomColor(
+                //  colorBrightness: ColorBrightness.dark
+             //   ),
+                quote: document['quote'],
+                author: document['author'],
 
-                    child: Padding(
-              padding: const EdgeInsets.only(left: 30, top: 0, right: 30),
-              child: ElevatedButton(
-                child: const Text('Get Quote',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    )),
-                onPressed: () {
-                  // updateUI();
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => DashboardPage()),
-                  );
-                },
-                style: ButtonStyle(
-                    alignment: Alignment.center,
-                    backgroundColor:
-                        MaterialStateProperty.all<Color>(Color(0XFF3BAAFF)),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(18.0),
-                      side: const BorderSide(color: Colors.white, width: 2),
-                    ))),
-              ),
-            ),
-                  )
-        ],
+              );
+            },
+          );
+        },
       ),
     );
+
+
   }
 
-  Widget listData(List<Quote> data) {
-    return ListView.builder(
-        itemCount: data.length,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.only(top: 10, bottom: 10, left: 5, right: 5 ),
-            child: Card(
-              color: Colors.blue,
-          child:
-                Text(data[index].quote,
-                style: const TextStyle(
-                  color: Colors.black,
-                   fontWeight: FontWeight.bold
-                  )
-                  ),
-                // const SizedBox(height: 20,)
-            ),
-          );
-          
-        });
+
+
+
+
+
+}
+
+class _LoadingIndicator extends StatelessWidget{
+  @override
+
+  Widget build(BuildContext context) {
+    return Center(
+      child: CircularProgressIndicator(),
+    );
   }
 }
